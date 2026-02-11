@@ -1,0 +1,34 @@
+# Changes from default:
+#   - replicas: 2 -> 5
+#   - image tag: 1.24 -> 1.25
+#   - service type: ClusterIP -> NodePort  (triggers DANGER risk)
+#   - cpu limits bumped
+#   - new env var added, LOG_LEVEL changed
+#   - configmap text updated
+
+replicaCount: 5
+
+image:
+  repository: nginx
+  tag: "1.25"
+  pullPolicy: IfNotPresent
+
+service:
+  type: NodePort
+  port: 80
+
+resources:
+  requests:
+    cpu: 200m
+    memory: 128Mi
+  limits:
+    cpu: 500m
+    memory: 512Mi
+
+env:
+  LOG_LEVEL: debug
+  APP_MODE: production
+  FEATURE_FLAG: "true"
+
+configData:
+  welcome: "Hello from demo-app v2 - upgraded!"

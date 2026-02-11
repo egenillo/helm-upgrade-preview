@@ -1,0 +1,12 @@
+Metadata-Version: 2.4
+Name: helm-preview
+Version: 0.1.0
+Summary: Semantic, noise-filtered, risk-aware diffs for Helm upgrades
+Requires-Python: >=3.10
+Requires-Dist: click>=8.0
+Requires-Dist: PyYAML>=6.0
+Requires-Dist: deepdiff>=6.0
+Requires-Dist: rich>=13.0
+Provides-Extra: dev
+Requires-Dist: pytest>=7.0; extra == "dev"
+Requires-Dist: pytest-mock>=3.0; extra == "dev"

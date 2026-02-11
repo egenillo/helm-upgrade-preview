@@ -1,0 +1,8 @@
+click>=8.0
+PyYAML>=6.0
+deepdiff>=6.0
+rich>=13.0
+
+[dev]
+pytest>=7.0
+pytest-mock>=3.0

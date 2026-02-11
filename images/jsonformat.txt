@@ -1,0 +1,130 @@
+{
+  "summary": {
+    "added": 0,
+    "removed": 0,
+    "changed": 3,
+    "unchanged": 0
+  },
+  "risk_summary": {
+    "safe": 2,
+    "warning": 0,
+    "danger": 1
+  },
+  "changes": [
+    {
+      "resource": "v1/ConfigMap/default/demo-release-config",
+      "kind": "ConfigMap",
+      "name": "demo-release-config",
+      "namespace": "default",
+      "status": "changed",
+      "risk": [],
+      "ownership": {
+        "manager": "helm",
+        "release": null,
+        "app": null
+      },
+      "fields": [
+        {
+          "path": "data.welcome.txt",
+          "old": "Hello from demo-app v1",
+          "new": "Hello from demo-app v2 - upgraded!",
+          "type": "value_changed"
+        }
+      ]
+    },
+    {
+      "resource": "v1/Service/default/demo-release",
+      "kind": "Service",
+      "name": "demo-release",
+      "namespace": "default",
+      "status": "changed",
+      "risk": [
+        {
+          "level": "danger",
+          "rule": "service_type_change",
+          "message": "Service type changed from ClusterIP to NodePort",
+          "path": "spec.type"
+        }
+      ],
+      "ownership": {
+        "manager": "helm",
+        "release": null,
+        "app": null
+      },
+      "fields": [
+        {
+          "path": "spec.type",
+          "old": "ClusterIP",
+          "new": "NodePort",
+          "type": "value_changed"
+        }
+      ]
+    },
+    {
+      "resource": "apps/v1/Deployment/default/demo-release",
+      "kind": "Deployment",
+      "name": "demo-release",
+      "namespace": "default",
+      "status": "changed",
+      "risk": [],
+      "ownership": {
+        "manager": "helm",
+        "release": null,
+        "app": null
+      },
+      "fields": [
+        {
+          "path": "spec.replicas",
+          "old": 2,
+          "new": 5,
+          "type": "value_changed"
+        },
+        {
+          "path": "spec.template.spec.containers[0].env[1].name",
+          "old": "LOG_LEVEL",
+          "new": "FEATURE_FLAG",
+          "type": "value_changed"
+        },
+        {
+          "path": "spec.template.spec.containers[0].env[1].value",
+          "old": "info",
+          "new": "true",
+          "type": "value_changed"
+        },
+        {
+          "path": "spec.template.spec.containers[0].image",
+          "old": "nginx:1.24",
+          "new": "nginx:1.25",
+          "type": "value_changed"
+        },
+        {
+          "path": "spec.template.spec.containers[0].resources.limits.cpu",
+          "old": "250m",
+          "new": "500m",
+          "type": "value_changed"
+        },
+        {
+          "path": "spec.template.spec.containers[0].resources.limits.memory",
+          "old": "256Mi",
+          "new": "512Mi",
+          "type": "value_changed"
+        },
+        {
+          "path": "spec.template.spec.containers[0].resources.requests.cpu",
+          "old": "100m",
+          "new": "200m",
+          "type": "value_changed"
+        },
+        {
+          "path": "spec.template.spec.containers[0].env[2]",
+          "old": null,
+          "new": {
+            "name": "LOG_LEVEL",
+            "value": "debug"
+          },
+          "type": "item_added"
+        }
+      ]
+    }
+  ]
+}

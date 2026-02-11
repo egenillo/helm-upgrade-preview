@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "helm-preview"
+version = "0.1.0"
+description = "Semantic, noise-filtered, risk-aware diffs for Helm upgrades"
+requires-python = ">=3.10"
+dependencies = [
+    "click>=8.0",
+    "PyYAML>=6.0",
+    "deepdiff>=6.0",
+    "rich>=13.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-mock>=3.0",
+]
+
+[project.scripts]
+helm-preview = "helm_preview.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

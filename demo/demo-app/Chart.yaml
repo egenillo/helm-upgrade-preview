@@ -1,0 +1,5 @@
+apiVersion: v2
+name: demo-app
+description: A demo chart for testing helm-preview
+version: 0.1.0
+appVersion: "1.0.0"
